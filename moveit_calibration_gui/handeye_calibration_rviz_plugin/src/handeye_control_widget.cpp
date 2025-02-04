@@ -405,7 +405,8 @@ bool ControlTabWidget::solveCameraRobotPose()
 
       // Update camera pose guess in context tab
       Eigen::Vector3d t = camera_robot_pose_.translation();
-      Eigen::Vector3d r = camera_robot_pose_.rotation().eulerAngles(2, 1, 0);
+      //Eigen::Vector3d r = camera_robot_pose_.rotation().eulerAngles(2, 1, 0);
+      Eigen::Vector3d r = camera_robot_pose_.rotation().eulerAngles(0, 1, 2);
       Q_EMIT sensorPoseUpdate(t[0], t[1], t[2], r[0], r[1], r[2]);
 
       // Calculate reprojection error
@@ -641,7 +642,8 @@ void ControlTabWidget::saveCameraPoseBtnClicked(bool clicked)
 
   Eigen::Vector3d t = camera_robot_pose_.translation();
   Eigen::Quaterniond r_quat(camera_robot_pose_.rotation());
-  Eigen::Vector3d r_euler = camera_robot_pose_.rotation().eulerAngles(2, 1, 0);
+  //Eigen::Vector3d r_euler = camera_robot_pose_.rotation().eulerAngles(2, 1, 0);
+  Eigen::Vector3d r_euler = camera_robot_pose_.rotation().eulerAngles(0, 1, 2);
 
   std::string mount_type;
   switch (sensor_mount_type_)
