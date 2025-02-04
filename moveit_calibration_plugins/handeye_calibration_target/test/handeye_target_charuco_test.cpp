@@ -139,13 +139,13 @@ TEST_F(MoveItHandEyeTargetTester, DetectCharucoMarkerPose)
   Eigen::Affine3d ret = tf2::transformToEigen(camera_transform);
   std::cout << "Translation:\n"
             << ret.translation() << "\nRotation:\n"
-            << ret.rotation().eulerAngles(0, 1, 2) << std::endl;
+            << ret.rotation().eulerAngles(2, 1, 0) << std::endl;
   Eigen::Vector3d t(0.09752, 0.102848, 0.325596);
   Eigen::Vector3d r(2.88409, -0.147996, 1.13757);
   // Running this detection in Python gives this result:
   // Eigen::Vector3d r(2.38276, -1.5543, 0.029617);
   ASSERT_TRUE(ret.translation().isApprox(t, 0.01));
-  ASSERT_TRUE(ret.rotation().eulerAngles(0, 1, 2).isApprox(r, 0.01));
+  ASSERT_TRUE(ret.rotation().eulerAngles(2, 1, 0).isApprox(r, 0.01));
 }
 
 int main(int argc, char** argv)

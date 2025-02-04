@@ -154,7 +154,7 @@ TEST_F(MoveItHandEyeSolverTester, SolveAXEQXB)
     Eigen::Vector3d r(0.230, -2.540, 1.950);
     Eigen::Isometry3d ret = solver_->getCameraRobotPose();
     ASSERT_TRUE(ret.translation().isApprox(t, 0.01));
-    ASSERT_TRUE(ret.rotation().eulerAngles(0, 1, 2).isApprox(r, 0.01));
+    ASSERT_TRUE(ret.rotation().eulerAngles(2, 1, 0).isApprox(r, 0.01));
   }
 }
 
